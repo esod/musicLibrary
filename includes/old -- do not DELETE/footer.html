@@ -1,0 +1,70 @@
+	<!-- End of the page-specific content. --></div>
+	
+	<div id="footer">
+<?php 
+
+// This script creates value lists of artists, albums, songs. Includes ids.
+
+// Make the query for the ARTISTS:
+$q = "SELECT artist, pk_artistid FROM esod_artists ORDER BY artist ASC";		
+$r = @mysqli_query ($dbc, $q); // Run the query.
+
+if (mysqli_num_rows($r) > 0) { // There are artists.
+
+// Fetch the artists....
+echo '<select name=artists class=selector><option value="">Artists</option>';
+while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
+		echo '<option value=' . $row['pk_artistid'] . '>' . $row['artist'] . '</option>
+	';
+} // End of WHILE loop.
+echo '</select>';
+
+} else { // There are no artists.
+echo '<p class="error">There are no artists, and the world is a smaller place.</p>';
+}	
+
+// Make the query for the ALBUMS:
+$q = "SELECT album, pk_albumid FROM esod_albums ORDER BY album ASC";		
+$r = @mysqli_query ($dbc, $q); // Run the query.
+
+if (mysqli_num_rows($r) > 0) { // There are albums.
+
+
+// Fetch the albums....
+echo '<select name=albums class=selector><option value="">Albums</option>';
+while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
+		echo '<option value=' . $row['pk_albumid'] . '>' . $row['album'] . '</option>
+	';
+} // End of WHILE loop.
+echo '</select>';
+
+} else { // There are no albums.
+echo '<p class="error">There are no albums, and the world is a smaller place.</p>';
+}	
+
+// Make the query for the SONGS:
+$q = "SELECT song, pk_songid FROM esod_songs ORDER BY song ASC";		
+$r = @mysqli_query ($dbc, $q); // Run the query.
+
+if (mysqli_num_rows($r) > 0) { // There are albums.
+
+
+// Fetch the songs....
+echo '<select name=songs class=selector><option value="">Songs</option>';
+while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
+		echo '<option value=' . $row['pk_songid'] . '>' . $row['song'] . '</option>
+	';
+} // End of WHILE loop.
+echo '</select>';
+
+} else { // There are no songs.
+echo '<p class="error">There are no songs, and the world is a smaller place.</p>';
+}	
+
+mysqli_free_result ($r);
+mysqli_close($dbc);
+
+?>
+	</div>
+</body>
+</html>

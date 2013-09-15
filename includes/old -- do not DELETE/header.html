@@ -1,0 +1,53 @@
+<?php 
+
+// This page begins the HTML header for the site.
+
+// Check for a $page_title value:
+if (!isset($page_title)) $page_title = 'musicLibrary';
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title><?php echo $page_title; ?></title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<link rel="shortcut icon" href="/ericsod/final_project/images/music_note.ico" type="image/x-icon" />	
+	<link rel="stylesheet" href="/ericsod/final_project/includes/general.css" type="text/css" media="screen" />
+	<script type="text/javascript" src="/ericsod/final_project/includes/select.js"></script>
+	<script src="http://jqueryjs.googlecode.com/files/jquery-1.2.6.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="/ericsod/final_project/includes/swfobject.js"></script>
+	<script src="/ericsod/final_project/includes/popup.js" type="text/javascript"></script>	
+
+</head>
+<body>
+	<div id="header">
+	<a href="/ericsod/final_project/musicians/index.php"><img src="/ericsod/final_project/images/logo.png" width="360" height="85">
+	</div>
+
+	<div id="navigation">
+	<ul>
+		<li><?php // Create a login/logout link.
+				if ( (isset($_SESSION['user_id'])) && (!strpos($_SERVER['PHP_SELF'], 'logout.php')) ) {
+				echo '<a href="/ericsod/final_project/logout.php"><div class="button">Logout</a>';
+				} else {
+				echo '<a href="/ericsod/final_project/index.php"><div class="button">Login</a>';
+				}
+			?></li>
+		<li><?php // Create a Register/Change Password link.
+				if ( (isset($_SESSION['user_id'])) && (!strpos($_SERVER['PHP_SELF'], 'logout.php')) ) {
+				echo '<a href="/ericsod/final_project/password.php"><div class="button">Change Password</a>';
+				} else {
+				echo '<a href="/ericsod/final_project/register.php"><div class="button">Register</a>';
+				}
+			?></li>
+		<li><a href="/ericsod/final_project/musicians/index.php"><div class="button">My Music</a></li>
+	</ul>
+		<li><form name="form1" id="form1" method="get" action="index.php">
+				<input type="text" name="terms" value="Search..." />
+				<input type="hidden" name="p" value="search" />&nbsp;
+				<input class="buton" type="submit" name="Submit" value="GO" />
+		</form></li>
+	</div>
+
+	<div class="clearfloat"></div>
+
+	<div id="content"><!-- Start of the page-specific content. -->

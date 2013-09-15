@@ -1,0 +1,53 @@
+Description
+--------------------------------------
+Show directory path with user definable: "Homepage Naming", "Symbol Separators", "Case Formatting", "Show Filename", "Hide File Extension", "Special Formatting", "Use Images", "Directory Aliasing", "Filename Aliasing", "Link If Index", "Use CSS Styles", "Replace Directory Underscores", "Hide Directory from Breadcrumb", "Link Filename", "Frameset Target", "Remove current directory link", Works with personal sites that use ~ in the URL, Set index page to something different if you have a splash page
+
+
+ChangeLog
+--------------------------------------
+2.4.4
+  Added the directory name to anchor titles
+  rootIndexName - Sets the root index page link for those who have a splash page and do not want the home breadcrumb to take them to the splashpage.
+  Fixed removeDirs() function to work with fileExists()
+  Changed the imagedir() function so that one can specify the image attributes.  One can now specify the path to the image directory, the image type (gif, jpg, etc), border, id, name, alt, title, hspace, vspace, align, height, and width.  Id, name, alt, title are all true/false variables to show or not to show.  When used in conjuction with the changeName() function, the alt and title attribute will reflect the changed name, while the id and name attributes will remain the same as the directory name.
+  WARNING: the format of the imagedir() function has now changed, so if you currently use this function, you will need to recode it using the new format!
+--------------------------------------
+2.4.2
+  Add "unlinkCurrentDir" variable that removes the current directory link
+  Now works with personal websites that have the username in the URL. 
+    http://www.domain.com/~username/
+  Bug fixed if you set homepage to '' and were at root it would show the spacer
+    symbol, now it just outputs the filename.
+  Bug fixed where when removing a directory, it also removed the directory from 
+    other directory links.
+--------------------------------------
+2.4
+  Add "linkFile" variable that links the filename to itself.
+  Add "target" variable targets a frameset
+  Change the changeFileName() function so that it takes the full server path to
+    the file instead of just the filename.  This allows you to rename specific
+    files, instead of all files with the same name.
+  Fix bug when hideFileExt and changeFileName were used together, it would break
+    changeFileName
+--------------------------------------
+2.3.7
+  Add "removeDirs()" function that allows you to remove a directory (keep it
+  	from showing) from the breadcrumb.
+  Add "hideFileExt" variable that hides the files extension
+  Add "changeFileName()" that aliases filenames to a name the user specifies
+  When using dirformat() of type 'ucwords' or 'titlecase', it will automatically
+    set '_toSpace' to true.
+  When using hideFileExt it will automatically set 'showfile' to true.
+  Fix bug that css was not showing up on the filename.
+--------------------------------------
+2.3
+  Example of how to use images as the crumb separator.
+  Use a css class to control the look of your breadcrumbs.
+  Convert underscores in your directory name to spaces.
+  A new Title Case formatting for those that are familiar with Title Case
+    (use with underscore conversion)
+  Uppercase Words formatting
+    (use with underscore conversion)
+  Update a couple variables for use with php 4.3.3
+--------------------------------------
+

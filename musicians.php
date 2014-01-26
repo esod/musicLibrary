@@ -58,6 +58,7 @@ include ('includes/header.php');
 				<div id="musicians">
 
 <?php // Determine the sorting order:
+$sort = '';
 switch ($sort) {
 	case 'a':
 		$order_by = 'artist ASC';
